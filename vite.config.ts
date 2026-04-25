@@ -26,11 +26,11 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          three:    ['three'],
-          r3f:      ['@react-three/fiber', '@react-three/drei'],
-          post:     ['@react-three/postprocessing', 'postprocessing'],
-          tanstack: ['@tanstack/react-router'],
+        manualChunks(id) {
+          if (id.includes('/three/') || id.includes('/three@'))        return 'three'
+          if (id.includes('@react-three/'))                            return 'r3f'
+          if (id.includes('postprocessing'))                           return 'post'
+          if (id.includes('@tanstack/'))                               return 'tanstack'
         },
       },
     },

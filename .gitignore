@@ -12,9 +12,6 @@ dist
 dist-ssr
 *.local
 
-# TanStack Router generated file
-src/routeTree.gen.ts
-
 # Dropbox
 .dropbox
 .dropbox.cache

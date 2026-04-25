@@ -16,7 +16,7 @@ import { useSpring, animated } from '@react-spring/three'
 import * as THREE from 'three'
 import { useStore } from '@/state/store'
 import { type Namespace } from '@/data/seed'
-import { hex, fontUrl } from '@/theme'
+import { color, hex, fontUrl } from '@/theme'
 
 // ─── Deterministic mock counts ────────────────────────────────────────────────
 function hashStr(s: string): number {
@@ -37,10 +37,10 @@ interface ResourceType {
 }
 
 const RESOURCE_TYPES: ResourceType[] = [
-  { key: 'pods',       label: 'PODS',       color: hex.cyan,  shape: 'pod'      },
+  { key: 'pods',       label: 'PODS',       color: color.cyan,  shape: 'pod'      },
   { key: 'services',   label: 'SERVICES',   color: '#7C5CBF', shape: 'service'  },
   { key: 'configmaps', label: 'CONFIGMAPS', color: '#4A90D9', shape: 'configmap'},
-  { key: 'secrets',    label: 'SECRETS',    color: hex.amber, shape: 'secret'   },
+  { key: 'secrets',    label: 'SECRETS',    color: color.amber, shape: 'secret'   },
   { key: 'jobs',       label: 'JOBS',       color: '#4CAF50', shape: 'job'      },
   { key: 'cronjobs',   label: 'CRONJOBS',   color: '#E91E8C', shape: 'cronjob'  },
 ]
