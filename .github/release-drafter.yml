@@ -14,6 +14,12 @@ categories:
   - title: "Other"
     labels: [chore]
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 version-resolver:
   major:
     labels: [breaking]
