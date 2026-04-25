@@ -5,9 +5,21 @@
   "description": "3D real-time Kubernetes cluster visualizer — React + R3F",
   "license": "Apache-2.0",
   "homepage": "https://github.com/martincollado/kubeislands",
-  "repository": { "type": "git", "url": "https://github.com/martincollado/kubeislands.git" },
-  "bugs": { "url": "https://github.com/martincollado/kubeislands/issues" },
-  "keywords": ["kubernetes", "visualization", "observability", "r3f", "three.js", "react"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martincollado/kubeislands.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martincollado/kubeislands/issues"
+  },
+  "keywords": [
+    "kubernetes",
+    "visualization",
+    "observability",
+    "r3f",
+    "three.js",
+    "react"
+  ],
   "author": "Martin Collado <info@martincollado.dev>",
   "type": "module",
   "scripts": {
@@ -24,10 +36,10 @@
     "@react-three/drei": "10.7.7",
     "@react-three/fiber": "9.6.0",
     "@react-three/postprocessing": "3.0.4",
-    "@tanstack/react-router": "^1.168.23",
+    "@tanstack/react-router": "^1.168.24",
     "postprocessing": "6.39.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "three": "0.184.0",
     "zustand": "5.0.12"
   },
@@ -37,8 +49,8 @@
     "@tanstack/router-devtools": "^1.166.13",
     "@tanstack/router-plugin": "^1.167.22",
     "@types/node": "^24.12.2",
-    "@types/react": "19",
-    "@types/react-dom": "19",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/three": "0.184.0",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^10.2.1",
