@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a new capability
+labels: ["type/proposal", "status/needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What situation are you trying to improve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: What should happen? Include mockups or examples if you have them.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought about?
+
+  - type: checkboxes
+    id: area
+    attributes:
+      label: Area
+      options:
+        - label: Engine (Go)
+        - label: Frontend (React / R3F)
+        - label: Helm chart
+        - label: CI / ops
+        - label: Documentation

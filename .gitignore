@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# TanStack Router generated file
+src/routeTree.gen.ts
+
+# Dropbox
+.dropbox
+.dropbox.cache
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Engine binaries
+/tmp/kube-engine
+engine/kube-engine
+engine/bin/
+
+# Go test / coverage
+coverage/
+*.out
+*.test
+
+# Local env overrides
+.env
+.env.*.local
+
+# Local Claude / internal planning notes (never committed)
+.claude/

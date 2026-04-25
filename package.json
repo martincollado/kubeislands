@@ -1,0 +1,53 @@
+{
+  "name": "kubeislands",
+  "private": false,
+  "version": "0.1.0",
+  "description": "3D real-time Kubernetes cluster visualizer — React + R3F",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/martincollado/kubeislands",
+  "repository": { "type": "git", "url": "https://github.com/martincollado/kubeislands.git" },
+  "bugs": { "url": "https://github.com/martincollado/kubeislands/issues" },
+  "keywords": ["kubernetes", "visualization", "observability", "r3f", "three.js", "react"],
+  "author": "Martin Collado <info@martincollado.dev>",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "5.2.8",
+    "@fontsource/orbitron": "5.2.8",
+    "@fontsource/rajdhani": "5.2.7",
+    "@react-spring/three": "^10.0.3",
+    "@react-three/drei": "10.7.7",
+    "@react-three/fiber": "9.6.0",
+    "@react-three/postprocessing": "3.0.4",
+    "@tanstack/react-router": "^1.168.23",
+    "postprocessing": "6.39.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "three": "0.184.0",
+    "zustand": "5.0.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/router-devtools": "^1.166.13",
+    "@tanstack/router-plugin": "^1.167.22",
+    "@types/node": "^24.12.2",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "@types/three": "0.184.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.10"
+  }
+}

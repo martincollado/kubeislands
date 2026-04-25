@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/* ─── Self-hosted fonts ───────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Orbitron-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Orbitron-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Rajdhani-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Rajdhani-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Rajdhani-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Rajdhani-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+}
+
+/* ─── Tailwind v4 theme tokens ────────────────────────────────────────────── */
+@theme inline {
+  --color-bg:          #02060F;
+  --color-bg2:         #050B1A;
+  --color-ink:         #E8F6FF;
+  --color-ink-dim:     #8AA6C4;
+  --color-ink-faint:   #52708E;
+  --color-cyan:        #00FFD1;
+  --color-cyan2:       #3EF3FF;
+  --color-cyan-dim:    #0A8F8A;
+  --color-red:         #FF3355;
+  --color-red-dim:     #7A1A2A;
+  --color-amber:       #FFB800;
+  --color-obs:         #8BE8FF;
+  --color-chassis:     #1A2434;
+  --color-chassis-mid: #2A3648;
+  --color-chassis-lo:  #0D1522;
+
+  --font-display: 'Orbitron', system-ui, sans-serif;
+  --font-ui:      'Rajdhani', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ─── CSS custom properties ───────────────────────────────────────────────── */
+:root {
+  --bg:             #02060F;
+  --bg2:            #050B1A;
+  --ink:            #E8F6FF;
+  --ink-dim:        #8AA6C4;
+  --ink-faint:      #52708E;
+  --cyan:           #00FFD1;
+  --cyan2:          #3EF3FF;
+  --cyan-dim:       #0A8F8A;
+  --red:            #FF3355;
+  --red-dim:        #7A1A2A;
+  --amber:          #FFB800;
+  --obs:            #8BE8FF;
+  --chassis:        #1A2434;
+  --chassis-mid:    #2A3648;
+  --chassis-lo:     #0D1522;
+  /* Glass panels */
+  --panel-bg:        rgba(8, 14, 28, 0.72);
+  --panel-bd:        rgba(0, 255, 209, 0.18);
+  --panel-bd-strong: rgba(0, 255, 209, 0.42);
+  --panel-blur:      blur(12px) saturate(140%);
+  --hair:            rgba(0, 255, 209, 0.14);
+}
+
+/* ─── Base reset ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HUD glass panel base */
+.panel {
+  position: absolute;
+  pointer-events: auto;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-bd);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  padding: 14px 16px;
+  border-radius: 0; /* angular aesthetic */
+}
+
+/* Corner accent top-left */
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 18px; height: 18px;
+  pointer-events: none;
+  border-top: 1px solid var(--panel-bd-strong);
+  border-left: 1px solid var(--panel-bd-strong);
+}
+
+/* Corner accent bottom-right */
+.panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 18px; height: 18px;
+  pointer-events: none;
+  border-bottom: 1px solid var(--panel-bd-strong);
+  border-right: 1px solid var(--panel-bd-strong);
+}
+
+/* Panel header */
+.panel-header {
+  font-family: 'Orbitron', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+
+.panel-header .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+  flex-shrink: 0;
+}
+
+.panel-header .sub {
+  margin-left: auto;
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}

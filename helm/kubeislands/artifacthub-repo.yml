@@ -1,0 +1,6 @@
+# ArtifactHub repository metadata
+# See https://artifacthub.io/docs/topics/repositories/
+repositoryID: ""  # Fill in after registering the repo on ArtifactHub
+owners:
+  - name: Martin Collado
+    email: info@martincollado.dev

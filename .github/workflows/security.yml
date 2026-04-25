@@ -1,0 +1,76 @@
+name: Security scan
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  trivy:
+    name: Trivy image scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan engine image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/${{ github.repository_owner }}/kubeislands-engine:latest
+          format: table
+          exit-code: "0"
+          severity: CRITICAL,HIGH
+          output: trivy-engine.txt
+      - name: Scan frontend image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/${{ github.repository_owner }}/kubeislands-frontend:latest
+          format: table
+          exit-code: "0"
+          severity: CRITICAL,HIGH
+          output: trivy-frontend.txt
+      - name: Open issue on findings
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const engine = fs.readFileSync('trivy-engine.txt', 'utf8');
+            const frontend = fs.readFileSync('trivy-frontend.txt', 'utf8');
+            const hasFindings = engine.includes('CRITICAL') || engine.includes('HIGH') ||
+                                frontend.includes('CRITICAL') || frontend.includes('HIGH');
+            if (!hasFindings) { console.log('No findings.'); return; }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Security: CVE findings ${new Date().toISOString().slice(0,10)}`,
+              labels: ['type/security', 'priority/high'],
+              body: `## Trivy scan results\n\n### Engine\n\`\`\`\n${engine}\n\`\`\`\n\n### Frontend\n\`\`\`\n${frontend}\n\`\`\``,
+            });
+
+  govulncheck:
+    name: govulncheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: engine/go.mod
+      - run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - run: cd engine && govulncheck ./...
+
+  npm-audit:
+    name: pnpm audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm audit --prod

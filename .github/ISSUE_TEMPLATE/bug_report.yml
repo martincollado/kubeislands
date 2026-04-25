@@ -1,0 +1,70 @@
+name: Bug report
+description: Something is broken
+labels: ["type/bug", "status/needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please fill out all sections — it helps us reproduce and fix faster.
+
+  - type: input
+    id: version
+    attributes:
+      label: KubeIslands version
+      placeholder: "v0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cluster-type
+    attributes:
+      label: Cluster type
+      options:
+        - kind
+        - minikube
+        - k3s / k3d
+        - EKS
+        - GKE
+        - AKS
+        - Other managed
+        - Bare metal
+    validations:
+      required: true
+
+  - type: input
+    id: k8s-version
+    attributes:
+      label: Kubernetes version
+      placeholder: "1.30.0"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Clear description of the bug and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install chart with ...
+        2. Open browser at ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Engine logs (`kubectl logs -n kubeislands deploy/kubeislands-engine`) or browser console errors.
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Paste any screenshots if relevant.

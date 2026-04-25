@@ -1,0 +1,10 @@
+KubeIslands
+Copyright 2026 Martin Collado <info@martincollado.dev>
+
+This product includes software developed by:
+- The Kubernetes authors (k8s.io/client-go, Apache-2.0)
+- The React team (react, react-dom, MIT)
+- Three.js authors (three, MIT)
+- Poimandres (@react-three/fiber, @react-three/drei, zustand, MIT)
+- The Go authors (standard library, BSD-3-Clause)
+- Gorilla WebSocket (gorilla/websocket, BSD-2-Clause)

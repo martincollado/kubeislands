@@ -1,0 +1,24 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+categories:
+  - title: "New Features"
+    labels: [type/feature]
+  - title: "Bug Fixes"
+    labels: [type/bug]
+  - title: "Security"
+    labels: [type/security]
+  - title: "Documentation"
+    labels: [area/docs]
+  - title: "Dependencies"
+    labels: [dependencies]
+  - title: "Other"
+    labels: [chore]
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+version-resolver:
+  major:
+    labels: [breaking]
+  minor:
+    labels: [type/feature]
+  patch:
+    labels: [type/bug, type/security, dependencies]
+  default: patch

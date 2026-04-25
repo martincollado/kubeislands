@@ -1,0 +1,65 @@
+## ── Frontend (Nginx + Vite static build) ─────────────────────────────────────
+frontend:
+  image:
+    repository: ghcr.io/martincollado/kubeislands-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicas: 1
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  service:
+    type: ClusterIP
+    port: 8080
+
+## ── Engine (Go WebSocket K8s watcher) ────────────────────────────────────────
+engine:
+  image:
+    repository: ghcr.io/martincollado/kubeislands-engine
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicas: 1
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  service:
+    type: ClusterIP
+    port: 8081
+  # Namespaces to watch — empty means all namespaces
+  watchNamespaces: ""
+  # Resync interval in seconds
+  resyncSeconds: 30
+
+## ── Ingress ──────────────────────────────────────────────────────────────────
+ingress:
+  enabled: false
+  className: nginx
+  annotations: {}
+  host: kubeislands.example.com
+  tls:
+    enabled: false
+    secretName: kubeislands-tls
+
+## ── RBAC ─────────────────────────────────────────────────────────────────────
+rbac:
+  # Creates ClusterRole + ClusterRoleBinding so the engine can watch all namespaces.
+  # Set to false and provide your own Role/RoleBinding for namespace-scoped deployments.
+  clusterScoped: true
+
+## ── ServiceAccount ───────────────────────────────────────────────────────────
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+## ── NetworkPolicy (opt-in) ───────────────────────────────────────────────────
+networkPolicy:
+  enabled: false

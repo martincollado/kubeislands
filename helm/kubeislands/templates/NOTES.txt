@@ -1,0 +1,15 @@
+KubeIslands deployed successfully!
+
+Frontend: {{ include "kubeislands.frontend.fullname" . }}
+Engine:   {{ include "kubeislands.engine.fullname" . }}
+
+{{- if .Values.ingress.enabled }}
+Access the UI at: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}
+{{- else }}
+To access locally:
+  kubectl port-forward svc/{{ include "kubeislands.frontend.fullname" . }} 8080:8080 -n {{ .Release.Namespace }}
+  open http://localhost:8080
+{{- end }}
+
+The engine connects to the K8s API using ServiceAccount:
+  {{ include "kubeislands.serviceAccountName" . }} ({{ if .Values.rbac.clusterScoped }}ClusterRole — watches all namespaces{{ else }}Role — watches {{ .Release.Namespace }} only{{ end }})

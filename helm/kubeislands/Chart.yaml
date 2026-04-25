@@ -1,0 +1,14 @@
+apiVersion: v2
+name: kubeislands
+description: 3D real-time Kubernetes cluster visualizer — React/R3F frontend + Go WebSocket engine
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - kubernetes
+  - observability
+  - visualization
+home: https://github.com/martincollado/kubeislands
+maintainers:
+  - name: Martin Collado
+    email: info@martincollado.dev
