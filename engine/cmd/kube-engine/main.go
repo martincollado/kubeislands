@@ -91,7 +91,7 @@ func main() {
 	})
 	mux.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
-		fmt.Fprintf(w, "%s (%s)\n", version, commit)
+		_, _ = fmt.Fprintf(w, "%s (%s)\n", version, commit)
 	})
 	mux.HandleFunc("/readyz", func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusOK)

@@ -126,7 +126,7 @@ func (c *client) readPump() {
 		c.hub.mu.Lock()
 		delete(c.hub.clients, c)
 		c.hub.mu.Unlock()
-		c.conn.Close()
+		_ = c.conn.Close()
 	}()
 	c.conn.SetReadLimit(maxMsgSize)
 	_ = c.conn.SetReadDeadline(time.Now().Add(pongWait))
@@ -146,7 +146,7 @@ func (c *client) writePump() {
 	ticker := time.NewTicker(pingPeriod)
 	defer func() {
 		ticker.Stop()
-		c.conn.Close()
+		_ = c.conn.Close()
 	}()
 	for {
 		select {

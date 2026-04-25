@@ -1,7 +1,6 @@
 package world
 
 import (
-	"encoding/json"
 	"reflect"
 
 	"github.com/martincollado/kubeislands-engine/internal/proto"
@@ -299,11 +298,4 @@ func diffNodes(prev, cur []proto.Node) []proto.Op {
 		}
 	}
 	return ops
-}
-
-// jsonEqual is a fallback deep-equal via JSON serialization
-func jsonEqual(a, b any) bool {
-	aj, _ := json.Marshal(a)
-	bj, _ := json.Marshal(b)
-	return string(aj) == string(bj)
 }
