@@ -12,12 +12,12 @@ const (
 
 // Namespace is one island in the world
 type Namespace struct {
-	ID      string   `json:"id"`
-	Name    string   `json:"name"`
+	ID      string     `json:"id"`
+	Name    string     `json:"name"`
 	Center  [2]float64 `json:"center"` // [x, z]
-	Radius  int      `json:"radius"`  // 6 or 8
-	Hue     string   `json:"hue"`
-	Ingress bool     `json:"ingress"`
+	Radius  int        `json:"radius"` // 6 or 8
+	Hue     string     `json:"hue"`
+	Ingress bool       `json:"ingress"`
 }
 
 // Deployment is a set of replicas inside a namespace

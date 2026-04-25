@@ -196,11 +196,11 @@ func (s *State) RecalculateLayout() {
 }
 
 func (s *State) resetTimers() {
-	s.tEvent   = 1.2 + rand.Float64()*1.6
-	s.tPod     = 5 + rand.Float64()*4
-	s.tDelete  = 8 + rand.Float64()*6
-	s.tBridge  = 12 + rand.Float64()*6
-	s.tNsSpawn  = 30 + rand.Float64()*20
+	s.tEvent = 1.2 + rand.Float64()*1.6
+	s.tPod = 5 + rand.Float64()*4
+	s.tDelete = 8 + rand.Float64()*6
+	s.tBridge = 12 + rand.Float64()*6
+	s.tNsSpawn = 30 + rand.Float64()*20
 	s.tNsDespawn = 60 + rand.Float64()*30
 }
 
@@ -210,11 +210,11 @@ func (s *State) Tick(dt float64) []proto.ClusterEvent {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	s.tEvent   -= dt
-	s.tPod     -= dt
-	s.tDelete  -= dt
-	s.tBridge  -= dt
-	s.tNsSpawn  -= dt
+	s.tEvent -= dt
+	s.tPod -= dt
+	s.tDelete -= dt
+	s.tBridge -= dt
+	s.tNsSpawn -= dt
 	s.tNsDespawn -= dt
 
 	if s.tEvent <= 0 {

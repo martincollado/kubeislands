@@ -63,10 +63,10 @@ var httpRouteGVR = schema.GroupVersionResource{
 
 // Watcher watches K8s resources and applies changes to world.State.
 type Watcher struct {
-	client     *kubernetes.Clientset
-	dynamic    dynamic.Interface
-	state      *world.State
-	rsToDepID  sync.Map // replicaSetUID (string) → deploymentID "ns/name" (string)
+	client    *kubernetes.Clientset
+	dynamic   dynamic.Interface
+	state     *world.State
+	rsToDepID sync.Map // replicaSetUID (string) → deploymentID "ns/name" (string)
 }
 
 // New creates a Watcher. Returns nil if no cluster is reachable.

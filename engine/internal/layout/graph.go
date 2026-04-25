@@ -3,13 +3,13 @@
 // Given a graph G = (namespaces, bridges), place namespaces on a hex grid so
 // that connected nodes are close and bridges don't cross. Strategy:
 //
-//   1. Find connected components.
-//   2. Biggest component → hub-concentric at origin. Hub = highest-degree node,
-//      neighbors on ring 1, their neighbors on ring 2, etc. Within a ring, each
-//      node goes to the slot whose angle best matches its BFS parent's angle,
-//      which keeps children near parents and reduces edge crossings.
-//   3. Other components → placed as sub-clusters on an outer arc.
-//   4. Singletons (no bridges) → packed into rings outside the main cluster.
+//  1. Find connected components.
+//  2. Biggest component → hub-concentric at origin. Hub = highest-degree node,
+//     neighbors on ring 1, their neighbors on ring 2, etc. Within a ring, each
+//     node goes to the slot whose angle best matches its BFS parent's angle,
+//     which keeps children near parents and reduces edge crossings.
+//  3. Other components → placed as sub-clusters on an outer arc.
+//  4. Singletons (no bridges) → packed into rings outside the main cluster.
 //
 // Deterministic: same input → same output (sorted IDs, stable tie-breaks).
 package layout

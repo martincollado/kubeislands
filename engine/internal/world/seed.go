@@ -7,21 +7,21 @@ import (
 )
 
 var seedNamespaces = []proto.Namespace{
-	{ID: "core",          Name: "CORE",          Center: [2]float64{0, 0},     Radius: 8, Hue: "#00FFD1", Ingress: true},
-	{ID: "web",           Name: "WEB",           Center: [2]float64{20, 0},    Radius: 8, Hue: "#3EF3FF", Ingress: true},
-	{ID: "data",          Name: "DATA",          Center: [2]float64{-18, 6},   Radius: 6, Hue: "#FFB800", Ingress: false},
-	{ID: "payments",      Name: "PAYMENTS",      Center: [2]float64{18, 18},   Radius: 8, Hue: "#FF3355", Ingress: false},
-	{ID: "observability", Name: "OBSERVABILITY", Center: [2]float64{-4, 20},   Radius: 6, Hue: "#8BE8FF", Ingress: false},
+	{ID: "core", Name: "CORE", Center: [2]float64{0, 0}, Radius: 8, Hue: "#00FFD1", Ingress: true},
+	{ID: "web", Name: "WEB", Center: [2]float64{20, 0}, Radius: 8, Hue: "#3EF3FF", Ingress: true},
+	{ID: "data", Name: "DATA", Center: [2]float64{-18, 6}, Radius: 6, Hue: "#FFB800", Ingress: false},
+	{ID: "payments", Name: "PAYMENTS", Center: [2]float64{18, 18}, Radius: 8, Hue: "#FF3355", Ingress: false},
+	{ID: "observability", Name: "OBSERVABILITY", Center: [2]float64{-4, 20}, Radius: 6, Hue: "#8BE8FF", Ingress: false},
 }
 
 var seedDeployments = []proto.Deployment{
-	{ID: "core-dep0",          NamespaceID: "core",          Name: "api-gateway",  Replicas: 4},
-	{ID: "web-dep0",           NamespaceID: "web",           Name: "frontend",     Replicas: 5},
-	{ID: "web-dep1",           NamespaceID: "web",           Name: "cdn-proxy",    Replicas: 3},
-	{ID: "data-dep0",          NamespaceID: "data",          Name: "postgres",     Replicas: 3},
-	{ID: "payments-dep0",      NamespaceID: "payments",      Name: "payment-svc",  Replicas: 4},
-	{ID: "payments-dep1",      NamespaceID: "payments",      Name: "fraud-detect", Replicas: 3},
-	{ID: "observability-dep0", NamespaceID: "observability", Name: "prometheus",   Replicas: 2},
+	{ID: "core-dep0", NamespaceID: "core", Name: "api-gateway", Replicas: 4},
+	{ID: "web-dep0", NamespaceID: "web", Name: "frontend", Replicas: 5},
+	{ID: "web-dep1", NamespaceID: "web", Name: "cdn-proxy", Replicas: 3},
+	{ID: "data-dep0", NamespaceID: "data", Name: "postgres", Replicas: 3},
+	{ID: "payments-dep0", NamespaceID: "payments", Name: "payment-svc", Replicas: 4},
+	{ID: "payments-dep1", NamespaceID: "payments", Name: "fraud-detect", Replicas: 3},
+	{ID: "observability-dep0", NamespaceID: "observability", Name: "prometheus", Replicas: 2},
 }
 
 var seedServices = []proto.Service{
@@ -44,10 +44,10 @@ var seedConfigMaps = []proto.ConfigMap{
 }
 
 var seedBridges = []proto.Bridge{
-	{A: "core", B: "web",           Traffic: 0.72, ErrorRate: 0.01},
-	{A: "core", B: "data",          Traffic: 0.45, ErrorRate: 0.02},
-	{A: "core", B: "payments",      Traffic: 0.60, ErrorRate: 0.03},
-	{A: "web",  B: "payments",      Traffic: 0.38, ErrorRate: 0.01},
+	{A: "core", B: "web", Traffic: 0.72, ErrorRate: 0.01},
+	{A: "core", B: "data", Traffic: 0.45, ErrorRate: 0.02},
+	{A: "core", B: "payments", Traffic: 0.60, ErrorRate: 0.03},
+	{A: "web", B: "payments", Traffic: 0.38, ErrorRate: 0.01},
 	{A: "core", B: "observability", Traffic: 0.25, ErrorRate: 0.00},
 }
 

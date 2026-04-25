@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/martincollado/kubeislands-engine/internal/k8s"
-	"github.com/martincollado/kubeislands-engine/internal/ws"
 	"github.com/martincollado/kubeislands-engine/internal/world"
+	"github.com/martincollado/kubeislands-engine/internal/ws"
 )
 
 // Injected at build time via -ldflags.
