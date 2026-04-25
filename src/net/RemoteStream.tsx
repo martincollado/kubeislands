@@ -1,8 +1,8 @@
 // RemoteStream — R3F component that replaces MockStream when VITE_ENGINE_URL is set.
 // Opens a WebSocket to the Go engine and applies incoming messages to Zustand.
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useStore } from '@/state/store'
-import { WorldSocket, type ConnectionStatus } from './WorldSocket'
+import { WorldSocket } from './WorldSocket'
 import { dispatch } from './Dispatcher'
 
 const ENGINE_URL = import.meta.env.VITE_ENGINE_URL as string | undefined
@@ -13,8 +13,6 @@ function toWsUrl(url: string): string {
 }
 
 export function RemoteStream() {
-  const setStatus = useRef<(s: ConnectionStatus) => void>(() => {})
-
   useEffect(() => {
     if (!ENGINE_URL) return
 
@@ -23,7 +21,6 @@ export function RemoteStream() {
       wsUrl,
       dispatch,
       (status) => {
-        // Store connection status in Zustand for HUD chip
         useStore.setState({ engineStatus: status })
       }
     )

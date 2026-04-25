@@ -60,14 +60,13 @@ export function Bridge({ bridge }: { bridge: BridgeData }) {
   const nsA = useMemo(() => namespaces.find(n => n.id === bridge.a), [namespaces, bridge.a])
   const nsB = useMemo(() => namespaces.find(n => n.id === bridge.b), [namespaces, bridge.b])
 
-  if (!nsA || !nsB) return null
-
+  // All hooks must be called unconditionally — compute with fallback, guard below
   const { mid, length, angle } = useMemo(() => {
+    if (!nsA || !nsB) return { mid: new THREE.Vector3(), length: 1, angle: 0 }
     const A = new THREE.Vector3(nsA.center[0], 0, nsA.center[1])
     const B = new THREE.Vector3(nsB.center[0], 0, nsB.center[1])
     const dir = new THREE.Vector3().subVectors(B, A)
     const fullLen = dir.length()
-    // Trim ends so bridge meets the island edge (factor ~0.92 = just inside rim)
     const L = Math.max(1, fullLen - (nsA.radius + nsB.radius) * 0.92)
     const midPt = new THREE.Vector3().lerpVectors(A, B, 0.5)
     const a = Math.atan2(dir.x, dir.z)
@@ -97,17 +96,7 @@ export function Bridge({ bridge }: { bridge: BridgeData }) {
     matRef.current.uniforms.uColor.value.copy(pulseColor)
   })
 
-  const strutCount = Math.max(2, Math.floor(length / 4))
-  const strutPositions = useMemo(() => {
-    const A = new THREE.Vector3(nsA.center[0], 0, nsA.center[1])
-    const B = new THREE.Vector3(nsB.center[0], 0, nsB.center[1])
-    const dir = new THREE.Vector3().subVectors(B, A).normalize()
-    const start = A.clone().addScaledVector(dir, nsA.radius * 0.92)
-    return Array.from({ length: strutCount - 1 }, (_, i) => {
-      const t = (i + 1) / strutCount
-      return start.clone().addScaledVector(dir, t * length)
-    })
-  }, [nsA, nsB, length, strutCount])
+  if (!nsA || !nsB) return null
 
   return (
     // Master group: rotate to bridge angle around Y — everything inside aligns automatically

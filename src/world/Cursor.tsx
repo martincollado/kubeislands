@@ -17,9 +17,7 @@ export function Cursor() {
   const matRef  = useRef<THREE.MeshBasicMaterial>(null)
 
   const hoveredNs  = useStore(s => s.hoveredNs)
-  const selectedNs = useStore(s => s.selectedNs)
-
-  useFrame(({ clock, raycaster, camera }) => {
+  useFrame(({ clock, raycaster }) => {
     const t = clock.getElapsedTime()
     const ring = ringRef.current
     const mat  = matRef.current

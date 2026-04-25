@@ -5,7 +5,8 @@ export function FPS() {
   const [fps, setFps] = useState(60)
   const [info, setInfo] = useState({ draws: 0, tris: 0, dpr: 1.8 })
   const frameCount = useRef(0)
-  const lastTime   = useRef(performance.now())
+  // eslint-disable-next-line react-hooks/purity
+  const lastTime   = useRef(performance.now()) // consumed only once, inside useEffect tick
 
   useEffect(() => {
     let raf: number

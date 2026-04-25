@@ -159,7 +159,7 @@ export function RTSCamera() {
       rig.current.targetDistance = Math.max(MIN_DIST, Math.min(MAX_DIST,
         rig.current.targetDistance + e.deltaY * WHEEL_SPEED * factor))
     }
-    function onClick(e: MouseEvent) {
+    function onClick(/* e: MouseEvent */) {
       raycaster.current.setFromCamera(
         new THREE.Vector2(mouse.current.x, mouse.current.y),
         camera

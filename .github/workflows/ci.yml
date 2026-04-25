@@ -59,7 +59,7 @@ jobs:
           cache-dependency-path: engine/go.sum
       - name: gofmt
         run: |
-          out=$(gofmt -d -s ./engine/...)
+          out=$(cd engine && gofmt -d -s ./...)
           if [ -n "$out" ]; then echo "$out"; exit 1; fi
       - name: go vet
         run: cd engine && go vet ./...

@@ -169,6 +169,7 @@ function ResourceTower({
 
       {/* Shape icon on top */}
       <group position={[0, 0.12 + pillarH + 0.25, 0]}>
+        {/* eslint-disable-next-line react-hooks/refs */}
         <TowerShape shape={rt.shape} color={rt.color} time={timeRef.current} />
       </group>
 
@@ -278,7 +279,6 @@ export function IslandResources({ ns }: { ns: Namespace }) {
   const pods = useMemo(() => allPods.filter(p => p.namespaceId === ns.id), [allPods, ns.id])
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
-  const hueNum = useMemo(() => parseInt(ns.hue.replace('#', ''), 16), [ns.hue])
   const R = ns.radius
 
   // Resource counts — pods live; rest from engine when connected, else mock

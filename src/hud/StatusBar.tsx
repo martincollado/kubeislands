@@ -107,18 +107,3 @@ export function StatusBar() {
   )
 }
 
-function Chip({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{
-      display: 'inline-block',
-      padding: '1px 6px',
-      border: '1px solid rgba(0,255,209,.4)',
-      color: 'var(--cyan)',
-      fontSize: 9,
-      letterSpacing: '0.1em',
-      marginLeft: 6,
-    }}>
-      {children}
-    </span>
-  )
-}

@@ -448,7 +448,8 @@ function FailedLight({ nsId }: { nsId: string }) {
 function ShockwaveRing({ hueNum, R }: { hueNum: number; R: number }) {
   const matRef = useRef<THREE.MeshBasicMaterial>(null)
   const ringRef = useRef<THREE.Mesh>(null)
-  const t = useRef(Math.random() * 4) // stagger phase
+  // eslint-disable-next-line react-hooks/purity
+  const t = useRef(Math.random() * 4) // stagger phase — useRef only uses initial value once
 
   useFrame((_, dt) => {
     t.current += dt * 0.5

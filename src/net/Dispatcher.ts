@@ -54,8 +54,6 @@ export function dispatch(msg: ServerMsg) {
 }
 
 function applyOp(op: Op) {
-  const s = useStore.getState()
-
   switch (op.op) {
     case 'add': {
       if (op.path === 'namespaces') {

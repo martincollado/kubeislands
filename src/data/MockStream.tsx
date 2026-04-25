@@ -34,12 +34,15 @@ function randomInterval() {
 let _dynNsCounter = 0
 
 export function MockStream() {
-  const nextEvent  = useRef(randomInterval())
-  const nextPod    = useRef(6)
-  const nextDelete = useRef(10)
-  const nextBridge = useRef(14)
-  const nextNsSpawn = useRef(30 + Math.random() * 20)   // 30-50s first spawn
-  const nextNsDespawn = useRef(60 + Math.random() * 30) // 60-90s first despawn
+  // useRef initial values are only consumed once — random calls here are intentional
+  /* eslint-disable react-hooks/purity */
+  const nextEvent     = useRef(randomInterval())
+  const nextPod       = useRef(6)
+  const nextDelete    = useRef(10)
+  const nextBridge    = useRef(14)
+  const nextNsSpawn   = useRef(30 + Math.random() * 20)   // 30-50s first spawn
+  const nextNsDespawn = useRef(60 + Math.random() * 30)   // 60-90s first despawn
+  /* eslint-enable react-hooks/purity */
 
   useFrame((_, dt) => {
     if (document.visibilityState === 'hidden') return

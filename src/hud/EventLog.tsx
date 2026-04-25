@@ -1,5 +1,4 @@
 
-import { useRef } from 'react'
 import { useStore } from '@/state/store'
 
 const VERB_COLORS: Record<string, { bg: string; text: string }> = {
