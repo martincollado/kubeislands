@@ -26,8 +26,8 @@
     "@react-three/postprocessing": "3.0.4",
     "@tanstack/react-router": "^1.168.23",
     "postprocessing": "6.39.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "three": "0.184.0",
     "zustand": "5.0.12"
   },
