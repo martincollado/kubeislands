@@ -32,7 +32,7 @@ jobs:
           severity: CRITICAL,HIGH
           output: trivy-frontend.txt
       - name: Open issue on findings
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
